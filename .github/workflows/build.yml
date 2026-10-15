@@ -1,0 +1,32 @@
+name: Compilar OptimizadorPC.exe
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller psutil customtkinter pillow
+
+      - name: Generar ícono
+        run: python make_icon.py
+
+      - name: Compilar .exe
+        run: pyinstaller --onefile --windowed --uac-admin --collect-all customtkinter --icon icon.ico --name OptimizadorPC optimizador_pc.py
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: OptimizadorPC
+          path: dist/OptimizadorPC.exe
