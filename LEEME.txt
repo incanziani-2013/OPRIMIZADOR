@@ -1,0 +1,17 @@
+COMO OBTENER OptimizadorPC.exe
+==============================
+
+1. Creá un repo nuevo en GitHub (por ejemplo "OptimizadorPC").
+2. Subí TODO el contenido de esta carpeta, incluida la carpeta oculta
+   .github (tiene que quedar .github/workflows/build.yml).
+3. En GitHub andá a la pestaña "Actions". Si no arrancó solo, elegí
+   "Compilar OptimizadorPC.exe" y tocá "Run workflow".
+4. Esperá 2-3 minutos. Cuando termine (tilde verde), entrá a esa
+   ejecución y bajá "OptimizadorPC" de la sección Artifacts (es un zip).
+5. Descomprimí y abrí OptimizadorPC.exe. No necesita Python instalado.
+
+Notas:
+- Windows SmartScreen puede avisar "editor desconocido" porque el .exe
+  no está firmado: tocá "Más información" > "Ejecutar de todas formas".
+- El .exe pide permisos de administrador al abrirse (para limpiar
+  C:\Windows\Temp).
